@@ -32,6 +32,7 @@ doubly* doubly::insert_front(doubly* front){
     if(front != NULL)
         front->prev = pNew;
 
+    // Return the new front of the list.
     return pNew;
 }
 
@@ -46,6 +47,7 @@ doubly* doubly::insert_back(doubly* front){
 
 
     if(front == NULL){
+        // In a doubly linked list, this means the previous pointer is to NULL.
         pNew->prev=NULL;
         return pNew;
     }else{
@@ -53,6 +55,8 @@ doubly* doubly::insert_back(doubly* front){
         while(iter->next != NULL){
             iter=iter->next;
         }
+        
+        // Now, this needs to relink to our new first element, pNew.
         iter->next = pNew;
         pNew->prev = iter;
         return front;
